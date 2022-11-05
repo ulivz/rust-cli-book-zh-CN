@@ -141,17 +141,17 @@
                     <main>
                         <h1 id="rust-中的命令行界面程序"><a class="header" href="#rust-中的命令行界面程序">Rust 中的命令行界面程序</a></h1>
 <p>Rust 是一种静态编译且速度快的语言，拥有出色的工具和快速发展的生态系统，
-这使得它非常适合编写命令行界面（Command Line Interface，下文简称 CLI）程序: 
-CLI 应该小巧、便携且运行迅速。
-命令行界面程序也是开始学习 Rust 的好方法，欢迎将 Rust 介绍给您的团队！</p>
-<p>编写简单的命令行界面 (CLI) 编写程序对于刚接触该语言并想要感受它的初学者来说是一个很好的练习，
-然而，这个话题有很多东西，往往只是在以后才会显现出来。</p>
+这使得它非常适合编写命令行界面（Command Line Interface，下文简称 CLI）程序:
+一个 CLI 应该小巧、便携且运行迅速。
+编写 CLI 也是开始学习 Rust 的好方法，欢迎将 Rust 介绍给你的团队！</p>
+<p>编写简单的 CLI 对于刚接触该语言并想要感受它的初学者来说是一个很好的练习，
+然而，这个话题有很多东西，往往只是在很久以后才会显现出来。</p>
 <p>这本书的结构是这样的：
 我们从一个快速教程开始，之后你会得到一个可以跑起来的 CLI 工具。
 你将接触到 Rust 的一些核心概念以及 CLI 应用程序的主要知识，
 接下来的章节将更详细地介绍其中一些方面。</p>
 <p>在我们深入 CLI 应用程序之前的最后一件事：
-如果你在本书中发现翻译错误，或希望帮助我们更新来自[英文原版] 的翻译，
+如果你在本书中发现翻译错误，或希望帮助我们更新来自 [英文原版] 的翻译，
 你可以在 <a href="https://github.com/ins-x/rust-cli-book-cn">Github</a> 中找到它的源代码。
 我们很想听听你的反馈！谢谢！</p>
 <p><a href="https://github.com/rust-cli/book">英文原版</a></p>
@@ -207,9 +207,9 @@ $ grrs --help
 </aside>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="项目设置"><a class="header" href="#项目设置">项目设置</a></h1>
 <p>如果你还没有准备好，
-首先在你的电脑上[安装 Rust]
+首先在你的电脑上<a href="https://www.rust-lang.org/tools/install">安装 Rust</a>
 (他可能会耗费几分钟)，
-接着，打开 Terminal，进入你想要放置你的应用代码的项目目录，</p>
+接着，打开 Terminal，进入你想要放置你的应用代码的项目目录。</p>
 <p>通过在目录中运行 <code>cargo new grrs</code> 来初始化一个项目
 如果你查看这个被创建的 <code>grrs</code> 目录
 你将会发现对于一个 Rust 项目需要的典型的设置：</p>
@@ -219,8 +219,7 @@ $ grrs --help
 <li><code>src/main.rs</code> 文件，是当前项目的 entry 的入口文件。</li>
 </ul>
 <p>如果你在 <code>grrs</code> 目录中运行 <code>cargo run</code>，
-你将会得到一个 “Hello World”，至此，你的项目准备好了
-and get a “Hello World”, you’re all set up.</p>
+你将会得到一个 “Hello World”，至此，你的项目准备好了。</p>
 <h2 id="可能的运行过程"><a class="header" href="#可能的运行过程">可能的运行过程</a></h2>
 <pre><code class="language-console">$ cargo new grrs
      Created binary (application) `grrs` package
@@ -245,7 +244,7 @@ Hello, world!
 以及如何将它们解析成某种利用使用的形式。
 你也需要去告诉你的 CLI Program 的用户有哪些可以传递的 arguments
 以及这些 arguments 所期望的格式。</p>
-<h2 id="getting-the-arguments"><a class="header" href="#getting-the-arguments">Getting the arguments</a></h2>
+<h2 id="获取-cli-参数"><a class="header" href="#获取-cli-参数">获取 CLI 参数</a></h2>
 <p>标准库中包含了一个函数 <a href="https://doc.rust-lang.org/1.39.0/std/env/fn.args.html"><code>std::env::args()</code></a>, 
 为你提供了一个用于获取指定的 arguments 的 <a href="https://doc.rust-lang.org/1.39.0/std/iter/index.html">iterator</a>
 第一个入口 (索引为 <code>0</code>) 将会是你的 CLI Program 的名称 (如 <code>grrs</code>),
@@ -263,9 +262,9 @@ println!(&quot;path: {}&quot;, path);
 pattern: pattern
 path: path
 </code></pre>
-<h2 id="cli-arguments-作为类型"><a class="header" href="#cli-arguments-作为类型">CLI arguments 作为类型</a></h2>
+<h2 id="给-cli-参数-增加类型"><a class="header" href="#给-cli-参数-增加类型">给 CLI 参数 增加类型</a></h2>
 <p>与其把他们想象成一堆文本，
-将 CLI arguments 视为一个表示你的程序的输入的自定义的数据类型通常是值得的。</p>
+将 CLI 参数视为一个表示你的程序的输入的自定义的数据类型通常是值得的。</p>
 <p>让我们看 <code>grrs foobar test.txt</code>:
 这里有两个 arguments:
 第一个是 <code>pattern</code> (要查找的字符串),
@@ -278,7 +277,7 @@ path: path
 <code>pattern</code> 应该是一个字符串，
 而第二个参数 <code>path</code> 应该是一个文件的路径。</p>
 <p>在 Rust 中，围绕所处理的数据来组织程序是非常常见的，
-所以这种查看 CLI arguments 的方式非常适合。
+所以这种查看 CLI 参数的方式非常适合。
 让我们从这里开始（在文件 <code>src/main.rs</code> 中 <code>fn main() {</code> 之前）:</p>
 <pre><code class="language-rust ignore">struct Cli {
     pattern: String,
@@ -306,7 +305,7 @@ let args = Cli {
 <p>这可以工作，但是不太方便，
 你将如何去处理 <code>--pattern=&quot;foo&quot;</code> 或  <code>--pattern &quot;foo&quot;</code> 的需求呢？
 你会如何去实现 <code>--help</code>?</p>
-<h2 id="使用-clap-解析-cli-arguments"><a class="header" href="#使用-clap-解析-cli-arguments">使用 Clap 解析 CLI arguments</a></h2>
+<h2 id="使用-clap-解析-cli-参数"><a class="header" href="#使用-clap-解析-cli-参数">使用 Clap 解析 CLI 参数</a></h2>
 <p>一个更棒的方式是去使用众多可用的库的一个，
 在 Rust 生态中，解析命令行参数最流行的库叫作 <a href="https://docs.rs/clap/"><code>clap</code></a>，
 它拥有所有你期望的能力，
