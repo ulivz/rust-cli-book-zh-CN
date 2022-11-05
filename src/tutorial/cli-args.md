@@ -1,121 +1,122 @@
-# Parsing command-line arguments
+# 解析命令行参数
 
-A typical invocation of our CLI tool will look like this:
+一个典型的调用我们的 CLI 工具的方式如下：
 
 ```console
 $ grrs foobar test.txt
 ```
 
-We expect our program to look at `test.txt`
-and print out the lines that contain `foobar`.
-But how do we get these two values?
+我们期望我们的程序去查找 `test.txt`
+并打印那些包含 `foobar` 的行，
+那么我们如何拿到这两个值呢？
 
-The text after the name of the program is often called
-the "command-line arguments",
-or "command-line flags"
-(especially when they look like `--this`).
-Internally, the operating system usually represents them
-as a list of strings –
-roughly speaking, they get separated by spaces.
+在 CLI Program 名称之后的文本通常被称为 `command-line arguments`
+或者 `command-line flags` (他们通常长这样: `--this`).
+操作系统内部通常将它们认为是一些字符串的清单 —— 粗略地说，这些字符串被空格分开。
 
-There are many ways to think about these arguments,
-and how to parse them
-into something more easy to work with.
-You will also need to tell the users of your program
-which arguments they need to give
-and in which format they are expected.
+这里有好几种方式去思考 arguments，
+以及如何将它们解析成某种利用使用的形式。
+你也需要去告诉你的 CLI Program 的用户有哪些可以传递的 arguments
+以及这些 arguments 所期望的格式。
 
 ## Getting the arguments
 
-The standard library contains the function
-[`std::env::args()`] that gives you an [iterator] of the given arguments.
-The first entry (at index `0`) will be the name your program was called as (e.g. `grrs`),
-the ones that follow are what the user wrote afterwards.
+标准库中包含了一个函数 [`std::env::args()`], 
+为你提供了一个用于获取指定的 arguments 的 [iterator]
+第一个入口 (索引为 `0`) 将会是你的 CLI Program 的名称 (如 `grrs`),
+接下来的部分则是用户写的。
 
 [`std::env::args()`]: https://doc.rust-lang.org/1.39.0/std/env/fn.args.html
 [iterator]: https://doc.rust-lang.org/1.39.0/std/iter/index.html
 
-Getting the raw arguments this way is quite easy (in file `src/main.rs`, after `fn main() {`):
+以这种方式获取原始的 arguments 非常容易 (写在文件 `src/main.rs` 中 `fn main() {` 的之后。)
 
 ```rust,ignore
-{{#include cli-args-struct.rs:10:11}}
+{{#include cli-args-struct.rs:10:13}}
 ```
 
-## CLI arguments as data type
+使用 `cargo run -- pattern path` 测试输出:
 
-Instead of thinking about them as a bunch of text,
-it often pays off to think of CLI arguments as a custom data type
-that represents the inputs to your program.
+```console
+$ cargo run -- pattern path
+    Finished dev [unoptimized + debuginfo] target(s) in 0.03s
+     Running `target/debug/grrs pattern path`
+pattern: pattern
+path: path
+```
 
-Look at `grrs foobar test.txt`:
-There are two arguments,
-first the `pattern` (the string to look for),
-and then the `path` (the file to look in).
+## CLI arguments 作为类型
 
-What more can we say about them?
-Well, for a start, both are required.
-We haven't talked about any default values,
-so we expect our users to always provide two values.
-Furthermore, we can say a bit about their types:
-The pattern is expected to be a string,
-while the second argument is expected to be a path to a file.
+与其把他们想象成一堆文本，
+将 CLI arguments 视为一个表示你的程序的输入的自定义的数据类型通常是值得的。
 
-In Rust, it is common to structure programs around the data they handle, so this
-way of looking at CLI arguments fits very well. Let's start with this (in file
-`src/main.rs`, before `fn main() {`):
+让我们看 `grrs foobar test.txt`:
+这里有两个 arguments:
+第一个是 `pattern` (要查找的字符串),
+接着第二个是 `path` (要搜索的文件).
+
+关于他们我们还需要说哪些东西吗？
+好吧，首先，两者都是必须的。
+我们还没有谈及任何默认值，
+所以我们希望我们的用户总是提供两个值，
+因此，我们可以说一下这些参数的类型：
+`pattern` 应该是一个字符串，
+而第二个参数 `path` 应该是一个文件的路径。
+
+在 Rust 中，围绕所处理的数据来组织程序是非常常见的，
+所以这种查看 CLI arguments 的方式非常适合。
+让我们从这里开始（在文件 `src/main.rs` 中 `fn main() {` 之前）:
 
 ```rust,ignore
 {{#include cli-args-struct.rs:3:7}}
 ```
 
-This defines a new structure (a [`struct`])
-that has two fields to store data in: `pattern`, and `path`.
+这里定义了一个新的结构（一个 [`struct`]），
+他包含了两个字段 `pattern`、`path` 来存储数据
 
 [`struct`]: https://doc.rust-lang.org/1.39.0/book/ch05-00-structs.html
 
 <aside>
 
 **Aside:**
-[`PathBuf`] is like a [`String`] but for file system paths that work cross-platform.
+[`PathBuf`] 与 [`String`] 类似，但是（设计上）是为了跨平台工作的路径。
 
 [`PathBuf`]: https://doc.rust-lang.org/1.39.0/std/path/struct.PathBuf.html
 [`String`]: https://doc.rust-lang.org/1.39.0/std/string/struct.String.html
 
 </aside>
 
-Now, we still need to get the actual arguments our program got into this form.
-One option would be to manually parse the list of strings we get from the operating system
-and build the structure ourselves.
-It would look something like this:
+现在，我们仍然需要将 Program 的实际参数转换为这种形式。
+一种方式是手动解析我们从操作系统拿到的字符串列表，然后自己构建这个结构，可能是这样：
 
 ```rust,ignore
-{{#include cli-args-struct.rs:10:15}}
+{{#include cli-args-struct.rs:10:17}}
 ```
 
-This works, but it's not very convenient.
-How would you deal with the requirement to support
-`--pattern="foo"` or `--pattern "foo"`?
-How would you implement `--help`?
+这可以工作，但是不太方便，
+你将如何去处理 `--pattern="foo"` 或  `--pattern "foo"` 的需求呢？
+你会如何去实现 `--help`?
 
-## Parsing CLI arguments with Clap
+## 使用 Clap 解析 CLI arguments
 
-A much nicer way is to use one of the many available libraries.
-The most popular library for parsing command-line arguments
-is called [`clap`].
-It has all the functionality you'd expect,
-including support for sub-commands, shell completions, and great help messages.
+一个更棒的方式是去使用众多可用的库的一个，
+在 Rust 生态中，解析命令行参数最流行的库叫作 [`clap`]，
+它拥有所有你期望的能力，
+包括对 [Sub Command]、[Shell completion] 还有好的 Help 信息的支持。
 
 [`clap`]: https://docs.rs/clap/
+[Sub Command]: https://docs.rs/clap/latest/clap/trait.Subcommand.html
+[Shell completion]: https://docs.rs/clap_complete/
 
-Let's first import `clap` by adding
-`clap = { version = "4.0", features = ["derive"] }` to the `[dependencies]` section
-of our `Cargo.toml` file.
+首先，让我们通过在 `Cargo.toml` 的 `[dependencies]` 中
+增加 `clap = { version = "4.0", features = ["derive"] }` 
+来引入 `clap`
 
-Now, we can write `use clap::Parser;` in our code,
-and add `#[derive(Parser)]` right above our `struct Cli`.
-Let's also write some documentation comments along the way.
+现在，我们可以在代码中写 `use clap::Parser;` 了，
+并在我们的 `struct Cli` 上方增加 `#[derive(Parser)]`
+让我们在这个过程中也写一些文档注释。
 
-It’ll look like this (in file `src/main.rs`, before `fn main() {`):
+代码最终会像这样（在文件 `src/main.rs` 中 `fn main() {` 之前)：
 
 ```rust,ignore
 {{#include cli-args-clap.rs:3:12}}
@@ -123,54 +124,54 @@ It’ll look like this (in file `src/main.rs`, before `fn main() {`):
 
 <aside class="node">
 
-**Note:**
-There are a lot of custom attributes you can add to fields.
-For example,
-to say you want to use this field for the argument after `-o` or `--output`,
-you'd add `#[arg(short = 'o', long = "output")]`.
-For more information,
-see the [clap documentation][`clap`].
+**注意:**
+你可以将许多自定义的属性添加到字段中，
+举例来说,
+如果您想将此字段用于 `-o` 或 `--output` 之后的参数，
+你可以增加 `#[arg(short = 'o', long = "output")]`，
+想要了解更多信息，
+请移步 [clap 的文档][`clap`].
 
 </aside>
 
-Right below the `Cli` struct our template contains its `main` function.
-When the program starts, it will call this function.
-The first line is:
+在 `Cli` struct 的正下方，我们的模板包含它的 `main` 函数。
+当程序启动时，它会调用这个函数，
+其第一行是：
 
 ```rust,ignore
 {{#include cli-args-clap.rs:14:16}}
 ```
 
-This will try to parse the arguments into our `Cli` struct.
+这将尝试将命令行参数解析到我们的 `Cli` struct 中。
 
-But what if that fails?
-That's the beauty of this approach:
-Clap knows which fields to expect,
-and what their expected format is.
-It can automatically generate a nice `--help` message,
-as well as give some great errors
-to suggest you pass `--output` when you wrote `--putput`.
+但如果失败了怎么办？
+这就是这种方法的美妙之处：
+Clap 知道可以哪些字段期望出现，
+以及它们的预期格式是什么。
+它可以自动生成一个不错的 `--help` 消息，
+以及给出一些不错的错误信息
+并在你输入 `--putput` 时建议你传入 `--output`。
 
 <aside class="note">
 
-**Note:**
-The `parse` method is meant to be used in your `main` function.
-When it fails,
-it will print out an error or help message
-and immediately exit the program.
-Don't use it in other places!
+**注意:**
+`parse` 方法是在你的 `main` 函数中使用的。
+失败时，
+它会打印出错误或帮助信息，
+并立即退出程序。
+请不要在其他地方使用！
 
 </aside>
 
 ## Wrapping up
 
-Your code should now look like:
+你的代码现在应该长这样：
 
 ```rust,ignore
 {{#include cli-args-clap.rs}}
 ```
 
-Running it without any arguments:
+如果不带任何参数运行它：
 
 ```console
 $ cargo run
@@ -186,7 +187,7 @@ USAGE:
 For more information try --help
 ```
 
-We can pass arguments when using `cargo run` directly by writing them after  `--`:
+我们可以在使用 `cargo run` 时直接通过在 `--` 后面写参数来传递参数：
 
 ```console
 $ cargo run -- some-pattern some-file
@@ -194,14 +195,14 @@ $ cargo run -- some-pattern some-file
      Running `target/debug/grrs some-pattern some-file`
 ```
 
-As you can see,
-there is no output.
-Which is good:
-That just means there is no error and our program ended.
+如你看到的，
+没有输出。
+这是对的：
+这只是意味着没有错误，我们的程序结束了。
 
 <aside class="exercise">
 
-**Exercise for the reader:**
-Make this program output its arguments!
+**读者练习:**
+让这个程序输出它的参数！
 
 </aside>
