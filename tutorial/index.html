@@ -1,9 +1,9 @@
 <!DOCTYPE HTML>
-<html lang="en" class="sidebar-visible no-js light">
+<html lang="zn_CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>A command line app in 15 minutes - Command Line Applications in Rust</title>
+        <title>通过 15 分钟写一个命令行应用来学习 Rust - Command Line Applications in Rust</title>
         <!-- Custom HTML head -->
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="description" content="">
@@ -76,7 +76,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">Getting started</a></li><li class="chapter-item expanded "><a href="../tutorial/index.html" class="active"><strong aria-hidden="true">1.</strong> A command line app in 15 minutes</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/setup.html"><strong aria-hidden="true">1.1.</strong> Project setup</a></li><li class="chapter-item expanded "><a href="../tutorial/cli-args.html"><strong aria-hidden="true">1.2.</strong> Parsing command line arguments</a></li><li class="chapter-item expanded "><a href="../tutorial/impl-draft.html"><strong aria-hidden="true">1.3.</strong> First implementation</a></li><li class="chapter-item expanded "><a href="../tutorial/errors.html"><strong aria-hidden="true">1.4.</strong> Nicer error reporting</a></li><li class="chapter-item expanded "><a href="../tutorial/output.html"><strong aria-hidden="true">1.5.</strong> Output for humans and machines</a></li><li class="chapter-item expanded "><a href="../tutorial/testing.html"><strong aria-hidden="true">1.6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../tutorial/packaging.html"><strong aria-hidden="true">1.7.</strong> Packaging and distributing a Rust tool</a></li></ol></li><li class="chapter-item expanded "><a href="../in-depth/index.html"><strong aria-hidden="true">2.</strong> In-depth topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../in-depth/signals.html"><strong aria-hidden="true">2.1.</strong> Signal handling</a></li><li class="chapter-item expanded "><a href="../in-depth/config-files.html"><strong aria-hidden="true">2.2.</strong> Using config files</a></li><li class="chapter-item expanded "><a href="../in-depth/exit-code.html"><strong aria-hidden="true">2.3.</strong> Exit codes</a></li><li class="chapter-item expanded "><a href="../in-depth/human-communication.html"><strong aria-hidden="true">2.4.</strong> Communicating with humans</a></li><li class="chapter-item expanded "><a href="../in-depth/machine-communication.html"><strong aria-hidden="true">2.5.</strong> Communicating with machines</a></li><li class="chapter-item expanded "><a href="../in-depth/docs.html"><strong aria-hidden="true">2.6.</strong> Rendering documentation for your CLI apps</a></li></ol></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="../index.html">快速上手</a></li><li class="chapter-item expanded "><a href="../tutorial/index.html" class="active"><strong aria-hidden="true">1.</strong> 通过 15 分钟写一个命令行应用来学习 Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../tutorial/setup.html"><strong aria-hidden="true">1.1.</strong> 项目设置</a></li><li class="chapter-item expanded "><a href="../tutorial/cli-args.html"><strong aria-hidden="true">1.2.</strong> 解析命令行参数</a></li><li class="chapter-item expanded "><a href="../tutorial/impl-draft.html"><strong aria-hidden="true">1.3.</strong> First implementation</a></li><li class="chapter-item expanded "><a href="../tutorial/errors.html"><strong aria-hidden="true">1.4.</strong> Nicer error reporting</a></li><li class="chapter-item expanded "><a href="../tutorial/output.html"><strong aria-hidden="true">1.5.</strong> Output for humans and machines</a></li><li class="chapter-item expanded "><a href="../tutorial/testing.html"><strong aria-hidden="true">1.6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="../tutorial/packaging.html"><strong aria-hidden="true">1.7.</strong> Packaging and distributing a Rust tool</a></li></ol></li><li class="chapter-item expanded "><a href="../in-depth/index.html"><strong aria-hidden="true">2.</strong> In-depth topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../in-depth/signals.html"><strong aria-hidden="true">2.1.</strong> Signal handling</a></li><li class="chapter-item expanded "><a href="../in-depth/config-files.html"><strong aria-hidden="true">2.2.</strong> Using config files</a></li><li class="chapter-item expanded "><a href="../in-depth/exit-code.html"><strong aria-hidden="true">2.3.</strong> Exit codes</a></li><li class="chapter-item expanded "><a href="../in-depth/human-communication.html"><strong aria-hidden="true">2.4.</strong> Communicating with humans</a></li><li class="chapter-item expanded "><a href="../in-depth/machine-communication.html"><strong aria-hidden="true">2.5.</strong> Communicating with machines</a></li><li class="chapter-item expanded "><a href="../in-depth/docs.html"><strong aria-hidden="true">2.6.</strong> Rendering documentation for your CLI apps</a></li></ol></li><li class="chapter-item expanded "><a href="../resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -111,7 +111,7 @@
                         <a href="../print.html" title="Print this book" aria-label="Print this book">
                             <i id="print-button" class="fa fa-print"></i>
                         </a>
-                        <a href="https://github.com/rust-cli/book" title="Git repository" aria-label="Git repository">
+                        <a href="https://github.com/ins-x/rust-cli-zh_CN" title="Git repository" aria-label="Git repository">
                             <i id="git-repository-button" class="fa fa-github"></i>
                         </a>
                     </div>
@@ -138,47 +138,38 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="learning-rust-by-writing-a-command-line-app-in-15-minutes"><a class="header" href="#learning-rust-by-writing-a-command-line-app-in-15-minutes">Learning Rust by Writing a Command Line App in 15 Minutes</a></h1>
-<p>This tutorial will guide you through writing
-a CLI (command line interface) application
-in <a href="https://rust-lang.org/">Rust</a>.
-It will take you roughly fifteen minutes
-to get to a point where you have a running program
-(around chapter 1.3).
-After that, we’ll continue to tweak our program
-until we reach a point where we can ship our little tool.</p>
-<p>You’ll learn all the essentials about how to get going,
-and where to find more information.
-Feel free to skip parts you don’t need to know right now
-or jump in at any point.</p>
+                        <h1 id="通过-15-分钟写一个命令行应用来学习-rust"><a class="header" href="#通过-15-分钟写一个命令行应用来学习-rust">通过 15 分钟写一个命令行应用来学习 Rust</a></h1>
+<p>本教程将会引导你使用 <a href="https://rust-lang.org/">Rust</a> 写一个 CLI (command line interface) 应用，
+大约需要十五分钟达到让你有一个正在运行的程序的地步，
+在那之后，我们将继续调整我们的程序，
+直到我们可以发布我们的小工具。</p>
+<p>你将学习有关如何开始的所有要领，
+以及在哪里可以找到更多信息。
+你可以随意跳过现在不需要知道的部分，
+或随时返回阅读。</p>
 <aside>
-<p><strong>Prerequisites:</strong>
-This tutorial does not replace a general introduction to programming,
-and expects you to be familiar with a few common concepts.
-You should be comfortable with using a command line/terminal.
-If you already know a few other languages,
-this can be a good first contact with Rust.</p>
-<p><strong>Getting help:</strong>
-If you at any point feel overwhelmed or confused with the features used,
-have a look at the extensive official documentation that comes with Rust,
-first and foremost the book,
-The Rust Programming Language.
-It comes with most Rust installations
-(<code>rustup doc</code>),
-and is available online on <a href="https://doc.rust-lang.org">doc.rust-lang.org</a>.</p>
-<p>You are also very welcome to ask questions –
-the Rust community is known to be friendly and helpful.
-Have a look at the <a href="https://www.rust-lang.org/community">community page</a>
-to see a list of places where people discuss Rust.</p>
+<p><strong>先决条件:</strong>
+本教程不会取代对编程的一般介绍，
+同时希望您熟悉一些常见的概念。
+你应该对使用命令行/终端感到满意。
+如果您已经了解其他几种语言，
+这可能是第一次接触 Rust 的好机会。</p>
+<p><strong>寻求帮助:</strong>
+如果您在任何时候对所使用的功能感到不知所措或感到困惑，
+请查看 Rust 随附的大量官方文档，
+首先是《The Rust Programming Language》一书。 它带有大多数 Rust 安装（rustup doc）的知识，可在 <a href="https://doc.rust-lang.org">doc.rust-lang.org</a> 上在线获取。</p>
+<p>也非常欢迎你提问——
+Rust 社区以友好和乐于助人而著称。
+看看 <a href="https://www.rust-lang.org/community">community page</a>
+查看人们讨论 Rust 的地方列表。</p>
 </aside>
-<p>What kind of project do you want to write?
-How about we start with something simple:
-Let’s write a small <code>grep</code> clone.
-That is a tool that we can give a string and a path
-and it’ll print only the lines that contain the given string.
-Let’s call it <code>grrs</code> (pronounced “grass”).</p>
-<p>In the end,
-we want to be able to run our tool like this:</p>
+<p>你想写什么样的项目？ 
+我们从简单的事情开始怎么样：
+让我们写一个小 <code>grep</code> 克隆。 
+这是一个我们可以提供字符串和路径的工具，
+它只会打印包含给定字符串的行。
+我们称它为 <code>grrs</code>（发音为 “grass”）。</p>
+<p>最后，我们希望能够像这样运行我们的工具：</p>
 <pre><code class="language-console">$ cat test.txt
 foo: 10
 bar: 20
@@ -190,13 +181,12 @@ $ grrs --help
 </code></pre>
 <aside class="note">
 <p><strong>Note:</strong>
-This book is written for <a href="https://doc.rust-lang.org/edition-guide/index.html">Rust 2018</a>.
-The code examples can also be used on Rust 2015,
-but you might need to tweak them a bit;
-add <code>extern crate foo;</code> invocations, for example.</p>
-<p>Make sure you run Rust 1.31.0 (or later)
-and that you have <code>edition = &quot;2018&quot;</code> set
-in the <code>[package]</code> section of your <code>Cargo.toml</code> file.</p>
+这本书是为 <a href="https://doc.rust-lang.org/edition-guide/index.html">Rust 2018</a> 编写的。
+代码示例也可用于 Rust 2015，
+但你可能需要稍微调整一下；
+例如，添加 <code>extern crate foo;</code> 调用。</p>
+<p>确保你运行 Rust 1.31.0（或更高版本）
+并且您在 <code>Cargo.toml</code> 文件的 <code>[package]</code> 中设置了 <code>edition = &quot;2018&quot;</code></p>
 </aside>
 
                     </main>
