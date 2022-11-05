@@ -19,7 +19,7 @@ $ grrs foobar test.txt
 你也需要去告诉你的 CLI Program 的用户有哪些可以传递的 arguments
 以及这些 arguments 所期望的格式。
 
-## Getting the arguments
+## 获取 CLI 参数
 
 标准库中包含了一个函数 [`std::env::args()`], 
 为你提供了一个用于获取指定的 arguments 的 [iterator]
@@ -45,10 +45,10 @@ pattern: pattern
 path: path
 ```
 
-## CLI arguments 作为类型
+## 给 CLI 参数增加类型
 
 与其把他们想象成一堆文本，
-将 CLI arguments 视为一个表示你的程序的输入的自定义的数据类型通常是值得的。
+将 CLI 参数视为一个表示你的程序的输入的自定义的数据类型通常是值得的。
 
 让我们看 `grrs foobar test.txt`:
 这里有两个 arguments:
@@ -64,7 +64,7 @@ path: path
 而第二个参数 `path` 应该是一个文件的路径。
 
 在 Rust 中，围绕所处理的数据来组织程序是非常常见的，
-所以这种查看 CLI arguments 的方式非常适合。
+所以这种查看 CLI 参数的方式非常适合。
 让我们从这里开始（在文件 `src/main.rs` 中 `fn main() {` 之前）:
 
 ```rust,ignore
@@ -78,7 +78,7 @@ path: path
 
 <aside>
 
-**Aside:**
+**Note:**
 [`PathBuf`] 与 [`String`] 类似，但是（设计上）是为了跨平台工作的路径。
 
 [`PathBuf`]: https://doc.rust-lang.org/1.39.0/std/path/struct.PathBuf.html
@@ -97,7 +97,7 @@ path: path
 你将如何去处理 `--pattern="foo"` 或  `--pattern "foo"` 的需求呢？
 你会如何去实现 `--help`?
 
-## 使用 Clap 解析 CLI arguments
+## 使用 Clap 解析 CLI 参数
 
 一个更棒的方式是去使用众多可用的库的一个，
 在 Rust 生态中，解析命令行参数最流行的库叫作 [`clap`]，
