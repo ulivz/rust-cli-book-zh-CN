@@ -138,28 +138,26 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="first-implementation-of-grrs"><a class="header" href="#first-implementation-of-grrs">First implementation of <em>grrs</em></a></h1>
-<p>After the last chapter on command line arguments,
-we have our input data,
-and we can start to write our actual tool.
-Our <code>main</code> function only contains this line right now:</p>
+                        <h1 id="grrs-的第一个实现"><a class="header" href="#grrs-的第一个实现"><em>grrs</em> 的第一个实现</a></h1>
+<p>在关于命令行参数的一章后，
+我们已经有了输入数据，
+我们可以开始编写实际的工具了，
+现在，我们的 <code>main</code> 函数只包含这一行：</p>
 <pre><code class="language-rust ignore">    let args = Cli::parse();
 </code></pre>
-<p>Let’s start by opening the file we got.</p>
+<p>让我们从读取我们得到的文件开始：</p>
 <pre><code class="language-rust ignore">    let content = std::fs::read_to_string(&amp;args.path).expect(&quot;could not read file&quot;);
 </code></pre>
 <aside>
-<p><strong>Aside:</strong>
-See that <a href="https://doc.rust-lang.org/1.39.0/std/result/enum.Result.html#method.expect"><code>.expect</code></a> method here?
-This is a shortcut function to quit that will make the program exit immediately
-when the value (in this case the input file)
-could not be read.
-It’s not very pretty,
-and in the next chapter on <a href="./errors.html">Nicer error reporting</a>
-we will look at how to improve this.</p>
+<p><strong>注意:</strong>
+看到这里的 <a href="https://doc.rust-lang.org/1.39.0/std/result/enum.Result.html#method.expect"><code>.expect</code></a> 方法了吗？
+这是一个当这个值（这个 case 中是这个输入文件）无法被读取时能够使程序立即退出的快捷功能，
+看起来不是很漂亮，
+在下一章<a href="./errors.html">更好的错误报告</a>中，
+我们将研究如何改进这一点。</p>
 </aside>
-<p>Now, let’s iterate over the lines
-and print each one that contains our pattern:</p>
+<p>现在，让我们遍历这些行，
+并打印初满足我们（指定的）pattern 的每一行：</p>
 <pre><code class="language-rust ignore">    for line in content.lines() {
         if line.contains(&amp;args.pattern) {
             println!(&quot;{}&quot;, line);
@@ -167,7 +165,7 @@ and print each one that contains our pattern:</p>
     }
 </code></pre>
 <h2 id="wrapping-up"><a class="header" href="#wrapping-up">Wrapping up</a></h2>
-<p>Your code should now look like:</p>
+<p>你的代码现在应该如下所示：</p>
 <pre><code class="language-rust ignore">#![allow(unused)]
 
 use clap::Parser;
@@ -192,15 +190,14 @@ fn main() {
     }
 }
 </code></pre>
-<p>Give it a try: <code>cargo run -- main src/main.rs</code> should work now!</p>
+<p>试试运行 <code>cargo run -- main src/main.rs</code>，它现在应该可以工作！</p>
 <aside class="exercise">
-<p><strong>Exercise for the reader:</strong>
-This is not the best implementation:
-It will read the whole file into memory
-– however large the file may be.
-Find a way to optimize it!
-(One idea might be to use a <a href="https://doc.rust-lang.org/1.39.0/std/io/struct.BufReader.html"><code>BufReader</code></a>
-instead of <code>read_to_string()</code>.)</p>
+<p><strong>读者练习:</strong>
+这不是最好的实现：
+无论文件有多大，
+它都将整个文件读入内存
+想办法优化吧！
+（一个可能的思路是使用 <a href="https://doc.rust-lang.org/1.39.0/std/io/struct.BufReader.html"><code>BufReader</code></a>，而不是 <code>read_to_string()</code>。）</p>
 </aside>
 
                     </main>
