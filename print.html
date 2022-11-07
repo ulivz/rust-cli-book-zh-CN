@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">快速上手</a></li><li class="chapter-item expanded "><a href="tutorial/index.html"><strong aria-hidden="true">1.</strong> 通过 15 分钟写一个命令行应用来学习 Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial/setup.html"><strong aria-hidden="true">1.1.</strong> 项目设置</a></li><li class="chapter-item expanded "><a href="tutorial/cli-args.html"><strong aria-hidden="true">1.2.</strong> 解析命令行参数</a></li><li class="chapter-item expanded "><a href="tutorial/impl-draft.html"><strong aria-hidden="true">1.3.</strong> First implementation</a></li><li class="chapter-item expanded "><a href="tutorial/errors.html"><strong aria-hidden="true">1.4.</strong> Nicer error reporting</a></li><li class="chapter-item expanded "><a href="tutorial/output.html"><strong aria-hidden="true">1.5.</strong> Output for humans and machines</a></li><li class="chapter-item expanded "><a href="tutorial/testing.html"><strong aria-hidden="true">1.6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="tutorial/packaging.html"><strong aria-hidden="true">1.7.</strong> Packaging and distributing a Rust tool</a></li></ol></li><li class="chapter-item expanded "><a href="in-depth/index.html"><strong aria-hidden="true">2.</strong> In-depth topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="in-depth/signals.html"><strong aria-hidden="true">2.1.</strong> Signal handling</a></li><li class="chapter-item expanded "><a href="in-depth/config-files.html"><strong aria-hidden="true">2.2.</strong> Using config files</a></li><li class="chapter-item expanded "><a href="in-depth/exit-code.html"><strong aria-hidden="true">2.3.</strong> Exit codes</a></li><li class="chapter-item expanded "><a href="in-depth/human-communication.html"><strong aria-hidden="true">2.4.</strong> Communicating with humans</a></li><li class="chapter-item expanded "><a href="in-depth/machine-communication.html"><strong aria-hidden="true">2.5.</strong> Communicating with machines</a></li><li class="chapter-item expanded "><a href="in-depth/docs.html"><strong aria-hidden="true">2.6.</strong> Rendering documentation for your CLI apps</a></li></ol></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">快速上手</a></li><li class="chapter-item expanded "><a href="tutorial/index.html"><strong aria-hidden="true">1.</strong> 通过 15 分钟写一个命令行应用来学习 Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial/setup.html"><strong aria-hidden="true">1.1.</strong> 项目设置</a></li><li class="chapter-item expanded "><a href="tutorial/cli-args.html"><strong aria-hidden="true">1.2.</strong> 解析命令行参数</a></li><li class="chapter-item expanded "><a href="tutorial/impl-draft.html"><strong aria-hidden="true">1.3.</strong> grrs 的第一个实现</a></li><li class="chapter-item expanded "><a href="tutorial/errors.html"><strong aria-hidden="true">1.4.</strong> Nicer error reporting</a></li><li class="chapter-item expanded "><a href="tutorial/output.html"><strong aria-hidden="true">1.5.</strong> Output for humans and machines</a></li><li class="chapter-item expanded "><a href="tutorial/testing.html"><strong aria-hidden="true">1.6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="tutorial/packaging.html"><strong aria-hidden="true">1.7.</strong> Packaging and distributing a Rust tool</a></li></ol></li><li class="chapter-item expanded "><a href="in-depth/index.html"><strong aria-hidden="true">2.</strong> In-depth topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="in-depth/signals.html"><strong aria-hidden="true">2.1.</strong> Signal handling</a></li><li class="chapter-item expanded "><a href="in-depth/config-files.html"><strong aria-hidden="true">2.2.</strong> Using config files</a></li><li class="chapter-item expanded "><a href="in-depth/exit-code.html"><strong aria-hidden="true">2.3.</strong> Exit codes</a></li><li class="chapter-item expanded "><a href="in-depth/human-communication.html"><strong aria-hidden="true">2.4.</strong> Communicating with humans</a></li><li class="chapter-item expanded "><a href="in-depth/machine-communication.html"><strong aria-hidden="true">2.5.</strong> Communicating with machines</a></li><li class="chapter-item expanded "><a href="in-depth/docs.html"><strong aria-hidden="true">2.6.</strong> Rendering documentation for your CLI apps</a></li></ol></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -207,15 +207,15 @@ $ grrs --help
 <div style="break-before: page; page-break-before: always;"></div><h1 id="项目设置"><a class="header" href="#项目设置">项目设置</a></h1>
 <p>如果你还没有准备好，
 首先在你的电脑上<a href="https://www.rust-lang.org/tools/install">安装 Rust</a>
-(他可能会耗费几分钟)，
-接着，打开 Terminal，进入你想要放置你的应用代码的项目目录。</p>
-<p>通过在目录中运行 <code>cargo new grrs</code> 来初始化一个项目
-如果你查看这个被创建的 <code>grrs</code> 目录
+（这可能会耗费几分钟），
+接着，打开 Terminal，进入你想要放置应用代码的项目目录。</p>
+<p>通过在目录中运行 <code>cargo new grrs</code> 来初始化一个项目，
+如果你查看这个被创建的 <code>grrs</code> 目录，
 你将会发现对于一个 Rust 项目需要的典型的设置：</p>
 <ul>
 <li><code>Cargo.toml</code> 文件包含了当前项目的元信息
 包含了我们用到的 <code>dependencies</code>、<code>external</code> 的库的青岛。</li>
-<li><code>src/main.rs</code> 文件，是当前项目的 entry 的入口文件。</li>
+<li><code>src/main.rs</code> 文件，是当前项目的入口文件。</li>
 </ul>
 <p>如果你在 <code>grrs</code> 目录中运行 <code>cargo run</code>，
 你将会得到一个 “Hello World”，至此，你的项目准备好了。</p>
@@ -237,18 +237,18 @@ Hello, world!
 并打印那些包含 <code>foobar</code> 的行，
 那么我们如何拿到这两个值呢？</p>
 <p>在 CLI Program 名称之后的文本通常被称为 <code>command-line arguments</code>
-或者 <code>command-line flags</code> (他们通常长这样: <code>--this</code>).
+或者 <code>command-line flags</code> (通常长这样: <code>--this</code>)，
 操作系统内部通常将它们认为是一些字符串的清单 —— 粗略地说，这些字符串被空格分开。</p>
 <p>这里有好几种方式去思考 arguments，
 以及如何将它们解析成某种利用使用的形式。
-你也需要去告诉你的 CLI Program 的用户有哪些可以传递的 arguments
+你也需要去告诉你的 CLI Program 的用户有哪些可以传递的 arguments，
 以及这些 arguments 所期望的格式。</p>
 <h2 id="获取-cli-参数"><a class="header" href="#获取-cli-参数">获取 CLI 参数</a></h2>
 <p>标准库中包含了一个函数 <a href="https://doc.rust-lang.org/1.39.0/std/env/fn.args.html"><code>std::env::args()</code></a>, 
-为你提供了一个用于获取指定的 arguments 的 <a href="https://doc.rust-lang.org/1.39.0/std/iter/index.html">iterator</a>
-第一个入口 (索引为 <code>0</code>) 将会是你的 CLI Program 的名称 (如 <code>grrs</code>),
+为你提供了一个用于获取指定的 arguments 的 <a href="https://doc.rust-lang.org/1.39.0/std/iter/index.html">iterator</a>，
+第一个入口 (索引为 <code>0</code>) 将会是你的 CLI Program 的名称 (如 <code>grrs</code>)，
 接下来的部分则是用户写的。</p>
-<p>以这种方式获取原始的 arguments 非常容易 (写在文件 <code>src/main.rs</code> 中 <code>fn main() {</code> 的之后。)</p>
+<p>以这种方式获取原始的 arguments 非常容易（在文件 <code>src/main.rs</code> 中 <code>fn main() {</code> 之后）</p>
 <pre><code class="language-rust ignore">let pattern = std::env::args().nth(1).expect(&quot;no pattern given&quot;);
 let path = std::env::args().nth(2).expect(&quot;no path given&quot;);
 println!(&quot;pattern: {}&quot;, pattern);
@@ -261,22 +261,23 @@ println!(&quot;path: {}&quot;, path);
 pattern: pattern
 path: path
 </code></pre>
-<h2 id="给-cli-参数增加类型"><a class="header" href="#给-cli-参数增加类型">给 CLI 参数增加类型</a></h2>
-<p>与其把他们想象成一堆文本，
-将 CLI 参数视为一个表示你的程序的输入的自定义的数据类型通常是值得的。</p>
+<h2 id="给-cli-arguments-增加类型"><a class="header" href="#给-cli-arguments-增加类型">给 CLI arguments 增加类型</a></h2>
+<p>让我们把 CLI arguments 视为一个表示你的程序输入的自定义数据类型，
+而不是想象成一堆文本，
+这通常是值得的。</p>
 <p>让我们看 <code>grrs foobar test.txt</code>:
-这里有两个 arguments:
-第一个是 <code>pattern</code> (要查找的字符串),
-接着第二个是 <code>path</code> (要搜索的文件).</p>
-<p>关于他们我们还需要说哪些东西吗？
-好吧，首先，两者都是必须的。
+这里有两个 <code>arguments</code>：
+第一个是 <code>pattern</code>（要查找的字符串）,
+接着第二个是 <code>path</code>（要搜索的文件）.</p>
+<p>关于 CLI arguments 我们还需要说哪些东西吗？
+好吧，首先，两者都是必须的，
 我们还没有谈及任何默认值，
-所以我们希望我们的用户总是提供两个值，
+所以我们希望我们的用户总是提供两个值。
 因此，我们可以说一下这些参数的类型：
 <code>pattern</code> 应该是一个字符串，
 而第二个参数 <code>path</code> 应该是一个文件的路径。</p>
 <p>在 Rust 中，围绕所处理的数据来组织程序是非常常见的，
-所以这种查看 CLI 参数的方式非常适合。
+所以这种查看 CLI 参数的方式非常合理。
 让我们从这里开始（在文件 <code>src/main.rs</code> 中 <code>fn main() {</code> 之前）:</p>
 <pre><code class="language-rust ignore">struct Cli {
     pattern: String,
@@ -285,7 +286,7 @@ path: path
 
 </code></pre>
 <p>这里定义了一个新的结构（一个 <a href="https://doc.rust-lang.org/1.39.0/book/ch05-00-structs.html"><code>struct</code></a>），
-他包含了两个字段 <code>pattern</code>、<code>path</code> 来存储数据</p>
+它包含了两个字段 <code>pattern</code>、<code>path</code> 来存储数据。</p>
 <aside>
 <p><strong>Note:</strong>
 <a href="https://doc.rust-lang.org/1.39.0/std/path/struct.PathBuf.html"><code>PathBuf</code></a> 与 <a href="https://doc.rust-lang.org/1.39.0/std/string/struct.String.html"><code>String</code></a> 类似，但是（设计上）是为了跨平台工作的路径。</p>
@@ -307,14 +308,14 @@ let args = Cli {
 <h2 id="使用-clap-解析-cli-参数"><a class="header" href="#使用-clap-解析-cli-参数">使用 Clap 解析 CLI 参数</a></h2>
 <p>一个更棒的方式是去使用众多可用的库的一个，
 在 Rust 生态中，解析命令行参数最流行的库叫作 <a href="https://docs.rs/clap/"><code>clap</code></a>，
-它拥有所有你期望的能力，
-包括对 <a href="https://docs.rs/clap/latest/clap/trait.Subcommand.html">Sub Command</a>、<a href="https://docs.rs/clap_complete/">Shell completion</a> 还有好的 Help 信息的支持。</p>
+它拥有你期望的所有能力，
+包括对 Sub Command、<a href="https://docs.rs/clap_complete/">Shell completion</a> 还有好的 Help 信息的支持。</p>
 <p>首先，让我们通过在 <code>Cargo.toml</code> 的 <code>[dependencies]</code> 中
 增加 <code>clap = { version = &quot;4.0&quot;, features = [&quot;derive&quot;] }</code> 
-来引入 <code>clap</code></p>
+来引入 <code>clap</code>。</p>
 <p>现在，我们可以在代码中写 <code>use clap::Parser;</code> 了，
-并在我们的 <code>struct Cli</code> 上方增加 <code>#[derive(Parser)]</code>
-让我们在这个过程中也写一些文档注释。</p>
+并在我们的 <code>struct Cli</code> 上方增加 <code>#[derive(Parser)]</code>，
+同时，让我们在这个过程中也写一些注释。</p>
 <p>代码最终会像这样（在文件 <code>src/main.rs</code> 中 <code>fn main() {</code> 之前)：</p>
 <pre><code class="language-rust ignore">use clap::Parser;
 
@@ -328,13 +329,13 @@ struct Cli {
 }
 </code></pre>
 <aside class="node">
-<p><strong>注意:</strong>
+<p><strong>注意：</strong>
 你可以将许多自定义的属性添加到字段中，
-举例来说,
+举例来说，
 如果您想将此字段用于 <code>-o</code> 或 <code>--output</code> 之后的参数，
 你可以增加 <code>#[arg(short = 'o', long = &quot;output&quot;)]</code>，
 想要了解更多信息，
-请移步 <a href="https://docs.rs/clap/">clap 的文档</a>.</p>
+请移步 <a href="https://docs.rs/clap/">clap 的文档</a>。</p>
 </aside>
 <p>在 <code>Cli</code> struct 的正下方，我们的模板包含它的 <code>main</code> 函数。
 当程序启动时，它会调用这个函数，
@@ -348,15 +349,15 @@ struct Cli {
 这就是这种方法的美妙之处：
 Clap 知道可以哪些字段期望出现，
 以及它们的预期格式是什么。
-它可以自动生成一个不错的 <code>--help</code> 消息，
-以及给出一些不错的错误信息
+它可以自动生成一个友好的 <code>--help</code> 消息，
+以及给出一些不错的错误信息，
 并在你输入 <code>--putput</code> 时建议你传入 <code>--output</code>。</p>
 <aside class="note">
-<p><strong>注意:</strong>
+<p><strong>注意：</strong>
 <code>parse</code> 方法是在你的 <code>main</code> 函数中使用的。
 失败时，
 它会打印出错误或帮助信息，
-并立即退出程序。
+并立即退出程序，
 请不要在其他地方使用！</p>
 </aside>
 <h2 id="wrapping-up"><a class="header" href="#wrapping-up">Wrapping up</a></h2>
@@ -398,7 +399,7 @@ For more information try --help
 </code></pre>
 <p>如你看到的，
 没有输出。
-这是对的：
+这是对的 ——
 这只是意味着没有错误，我们的程序结束了。</p>
 <aside class="exercise">
 <p><strong>读者练习:</strong>
