@@ -11,25 +11,25 @@ $ grrs foobar test.txt
 那么我们如何拿到这两个值呢？
 
 在 CLI Program 名称之后的文本通常被称为 `command-line arguments`
-或者 `command-line flags` (他们通常长这样: `--this`).
+或者 `command-line flags` (通常长这样: `--this`)，
 操作系统内部通常将它们认为是一些字符串的清单 —— 粗略地说，这些字符串被空格分开。
 
 这里有好几种方式去思考 arguments，
 以及如何将它们解析成某种利用使用的形式。
-你也需要去告诉你的 CLI Program 的用户有哪些可以传递的 arguments
+你也需要去告诉你的 CLI Program 的用户有哪些可以传递的 arguments，
 以及这些 arguments 所期望的格式。
 
 ## 获取 CLI 参数
 
 标准库中包含了一个函数 [`std::env::args()`], 
-为你提供了一个用于获取指定的 arguments 的 [iterator]
-第一个入口 (索引为 `0`) 将会是你的 CLI Program 的名称 (如 `grrs`),
+为你提供了一个用于获取指定的 arguments 的 [iterator]，
+第一个入口 (索引为 `0`) 将会是你的 CLI Program 的名称 (如 `grrs`)，
 接下来的部分则是用户写的。
 
 [`std::env::args()`]: https://doc.rust-lang.org/1.39.0/std/env/fn.args.html
 [iterator]: https://doc.rust-lang.org/1.39.0/std/iter/index.html
 
-以这种方式获取原始的 arguments 非常容易 (写在文件 `src/main.rs` 中 `fn main() {` 的之后。)
+以这种方式获取原始的 arguments 非常容易（在文件 `src/main.rs` 中 `fn main() {` 之后）
 
 ```rust,ignore
 {{#include cli-args-struct.rs:10:13}}
@@ -45,26 +45,27 @@ pattern: pattern
 path: path
 ```
 
-## 给 CLI 参数增加类型
+## 给 CLI arguments 增加类型
 
-与其把他们想象成一堆文本，
-将 CLI 参数视为一个表示你的程序的输入的自定义的数据类型通常是值得的。
+让我们把 CLI arguments 视为一个表示你的程序输入的自定义数据类型，
+而不是想象成一堆文本，
+这通常是值得的。
 
 让我们看 `grrs foobar test.txt`:
-这里有两个 arguments:
-第一个是 `pattern` (要查找的字符串),
-接着第二个是 `path` (要搜索的文件).
+这里有两个 `arguments`：
+第一个是 `pattern`（要查找的字符串）,
+接着第二个是 `path`（要搜索的文件）.
 
-关于他们我们还需要说哪些东西吗？
-好吧，首先，两者都是必须的。
+关于 CLI arguments 我们还需要说哪些东西吗？
+好吧，首先，两者都是必须的，
 我们还没有谈及任何默认值，
-所以我们希望我们的用户总是提供两个值，
+所以我们希望我们的用户总是提供两个值。
 因此，我们可以说一下这些参数的类型：
 `pattern` 应该是一个字符串，
 而第二个参数 `path` 应该是一个文件的路径。
 
 在 Rust 中，围绕所处理的数据来组织程序是非常常见的，
-所以这种查看 CLI 参数的方式非常适合。
+所以这种查看 CLI 参数的方式非常合理。
 让我们从这里开始（在文件 `src/main.rs` 中 `fn main() {` 之前）:
 
 ```rust,ignore
@@ -72,7 +73,7 @@ path: path
 ```
 
 这里定义了一个新的结构（一个 [`struct`]），
-他包含了两个字段 `pattern`、`path` 来存储数据
+它包含了两个字段 `pattern`、`path` 来存储数据。
 
 [`struct`]: https://doc.rust-lang.org/1.39.0/book/ch05-00-structs.html
 
@@ -101,20 +102,19 @@ path: path
 
 一个更棒的方式是去使用众多可用的库的一个，
 在 Rust 生态中，解析命令行参数最流行的库叫作 [`clap`]，
-它拥有所有你期望的能力，
-包括对 [Sub Command]、[Shell completion] 还有好的 Help 信息的支持。
+它拥有你期望的所有能力，
+包括对 Sub Command、[Shell completion] 还有好的 Help 信息的支持。
 
 [`clap`]: https://docs.rs/clap/
-[Sub Command]: https://docs.rs/clap/latest/clap/trait.Subcommand.html
 [Shell completion]: https://docs.rs/clap_complete/
 
 首先，让我们通过在 `Cargo.toml` 的 `[dependencies]` 中
 增加 `clap = { version = "4.0", features = ["derive"] }` 
-来引入 `clap`
+来引入 `clap`。
 
 现在，我们可以在代码中写 `use clap::Parser;` 了，
-并在我们的 `struct Cli` 上方增加 `#[derive(Parser)]`
-让我们在这个过程中也写一些文档注释。
+并在我们的 `struct Cli` 上方增加 `#[derive(Parser)]`，
+同时，让我们在这个过程中也写一些注释。
 
 代码最终会像这样（在文件 `src/main.rs` 中 `fn main() {` 之前)：
 
@@ -124,13 +124,13 @@ path: path
 
 <aside class="node">
 
-**注意:**
+**注意：**
 你可以将许多自定义的属性添加到字段中，
-举例来说,
+举例来说，
 如果您想将此字段用于 `-o` 或 `--output` 之后的参数，
 你可以增加 `#[arg(short = 'o', long = "output")]`，
 想要了解更多信息，
-请移步 [clap 的文档][`clap`].
+请移步 [clap 的文档][`clap`]。
 
 </aside>
 
@@ -148,17 +148,17 @@ path: path
 这就是这种方法的美妙之处：
 Clap 知道可以哪些字段期望出现，
 以及它们的预期格式是什么。
-它可以自动生成一个不错的 `--help` 消息，
-以及给出一些不错的错误信息
+它可以自动生成一个友好的 `--help` 消息，
+以及给出一些不错的错误信息，
 并在你输入 `--putput` 时建议你传入 `--output`。
 
 <aside class="note">
 
-**注意:**
+**注意：**
 `parse` 方法是在你的 `main` 函数中使用的。
 失败时，
 它会打印出错误或帮助信息，
-并立即退出程序。
+并立即退出程序，
 请不要在其他地方使用！
 
 </aside>
@@ -197,7 +197,7 @@ $ cargo run -- some-pattern some-file
 
 如你看到的，
 没有输出。
-这是对的：
+这是对的 ——
 这只是意味着没有错误，我们的程序结束了。
 
 <aside class="exercise">

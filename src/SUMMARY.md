@@ -5,7 +5,7 @@
 - [通过 15 分钟写一个命令行应用来学习 Rust](./tutorial/README.md)
   - [项目设置](./tutorial/setup.md)
   - [解析命令行参数](./tutorial/cli-args.md)
-  - [First implementation](./tutorial/impl-draft.md)
+  - [_grrs_ 的第一个实现](./tutorial/impl-draft.md)
   - [Nicer error reporting](./tutorial/errors.md)
   - [Output for humans and machines](./tutorial/output.md)
   - [Testing](./tutorial/testing.md)
