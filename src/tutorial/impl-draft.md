@@ -51,9 +51,9 @@
 **读者练习:**
 这不是最好的实现：
 无论文件有多大，
-它都将整个文件读入内存
-想办法优化吧！
-（一个可能的思路是使用 [`BufReader`]，而不是 `read_to_string()`。）
+它都将整个文件读入内存,
+让我们想想办法优化
+（一个可能的思路是使用 [`BufReader`]，而不是 `read_to_string()`）。
 
 [`BufReader`]: https://doc.rust-lang.org/1.39.0/std/io/struct.BufReader.html
 
