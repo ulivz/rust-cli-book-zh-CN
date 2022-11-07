@@ -462,9 +462,9 @@ fn main() {
 <p><strong>读者练习:</strong>
 这不是最好的实现：
 无论文件有多大，
-它都将整个文件读入内存
-想办法优化吧！
-（一个可能的思路是使用 <a href="https://doc.rust-lang.org/1.39.0/std/io/struct.BufReader.html"><code>BufReader</code></a>，而不是 <code>read_to_string()</code>。）</p>
+它都将整个文件读入内存,
+让我们想想办法优化
+（一个可能的思路是使用 <a href="https://doc.rust-lang.org/1.39.0/std/io/struct.BufReader.html"><code>BufReader</code></a>，而不是 <code>read_to_string()</code>）。</p>
 </aside>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="nicer-error-reporting"><a class="header" href="#nicer-error-reporting">Nicer error reporting</a></h1>
 <p>We all can do nothing but accept the fact that errors will occur.
