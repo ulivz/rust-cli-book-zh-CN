@@ -416,7 +416,7 @@ For more information try --help
 <pre><code class="language-rust ignore">    let content = std::fs::read_to_string(&amp;args.path).expect(&quot;could not read file&quot;);
 </code></pre>
 <aside>
-<p><strong>注意:</strong>
+<p><strong>注意：</strong>
 看到这里的 <a href="https://doc.rust-lang.org/1.39.0/std/result/enum.Result.html#method.expect"><code>.expect</code></a> 方法了吗？
 这是一个当这个值（这个 case 中是这个输入文件）无法被读取时能够使程序立即退出的快捷功能，
 看起来不是很漂亮，
@@ -459,7 +459,7 @@ fn main() {
 </code></pre>
 <p>试试运行 <code>cargo run -- main src/main.rs</code>，它现在应该可以工作！</p>
 <aside class="exercise">
-<p><strong>读者练习:</strong>
+<p><strong>读者练习：</strong>
 这不是最好的实现：
 无论文件有多大，
 它都将整个文件读入内存,
