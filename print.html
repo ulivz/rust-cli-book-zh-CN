@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html lang="zn_CN" class="sidebar-visible no-js light">
+<html lang="zh_CN" class="sidebar-visible no-js light">
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
@@ -140,21 +140,20 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="rust-中的命令行界面程序"><a class="header" href="#rust-中的命令行界面程序">Rust 中的命令行界面程序</a></h1>
-<p>Rust 是一种静态编译且速度快的语言，拥有出色的工具和快速发展的生态系统，
+<p>Rust 是一种静态编译、执行速度快的语言，拥有出色的工具和快速发展的生态系统，
 这使得它非常适合编写命令行界面（Command Line Interface，下文简称 CLI）程序:
 一个 CLI 应该小巧、便携且运行迅速。
 编写 CLI 也是开始学习 Rust 的好方法，欢迎将 Rust 介绍给你的团队！</p>
 <p>编写简单的 CLI 对于刚接触该语言并想要感受它的初学者来说是一个很好的练习，
-然而，这个话题有很多东西，往往只是在很久以后才会显现出来。</p>
+然而，这个话题有很多东西，往往只是在（练习）很久以后才会浮现出来。</p>
 <p>这本书的结构是这样的：
-我们从一个快速教程开始，之后你会得到一个可以跑起来的 CLI 工具。
+我们会从一个快速教程开始，之后你会得到一个可以跑起来的 CLI 工具。
 你将接触到 Rust 的一些核心概念以及 CLI 应用程序的主要知识，
-接下来的章节将更详细地介绍其中一些方面。</p>
+接下来的章节将更详细地介绍其中的一些知识。</p>
 <p>在我们深入 CLI 应用程序之前的最后一件事：
-如果你在本书中发现翻译错误，或希望帮助我们更新来自 [英文原版] 的翻译，
+如果你在本书中发现翻译错误，或希望帮助我们更新来自 <a href="https://github.com/rust-cli/book">英文原版</a> 的翻译，
 你可以在 <a href="https://github.com/ins-x/rust-cli-book-cn">Github</a> 中找到它的源代码。
 我们很想听听你的反馈！谢谢！</p>
-<p><a href="https://github.com/rust-cli/book">英文原版</a></p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="通过-15-分钟写一个命令行应用来学习-rust"><a class="header" href="#通过-15-分钟写一个命令行应用来学习-rust">通过 15 分钟写一个命令行应用来学习 Rust</a></h1>
 <p>本教程将会引导你使用 <a href="https://rust-lang.org/">Rust</a> 写一个 CLI (command line interface) 应用，
 大约需要十五分钟达到让你有一个正在运行的程序的地步，
