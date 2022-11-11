@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">快速上手</a></li><li class="chapter-item expanded "><a href="tutorial/index.html"><strong aria-hidden="true">1.</strong> 通过 15 分钟写一个命令行应用来学习 Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial/setup.html"><strong aria-hidden="true">1.1.</strong> 项目设置</a></li><li class="chapter-item expanded "><a href="tutorial/cli-args.html"><strong aria-hidden="true">1.2.</strong> 解析命令行参数</a></li><li class="chapter-item expanded "><a href="tutorial/impl-draft.html"><strong aria-hidden="true">1.3.</strong> grrs 的第一个实现</a></li><li class="chapter-item expanded "><a href="tutorial/errors.html"><strong aria-hidden="true">1.4.</strong> Nicer error reporting</a></li><li class="chapter-item expanded "><a href="tutorial/output.html"><strong aria-hidden="true">1.5.</strong> Output for humans and machines</a></li><li class="chapter-item expanded "><a href="tutorial/testing.html"><strong aria-hidden="true">1.6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="tutorial/packaging.html"><strong aria-hidden="true">1.7.</strong> Packaging and distributing a Rust tool</a></li></ol></li><li class="chapter-item expanded "><a href="in-depth/index.html"><strong aria-hidden="true">2.</strong> In-depth topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="in-depth/signals.html"><strong aria-hidden="true">2.1.</strong> Signal handling</a></li><li class="chapter-item expanded "><a href="in-depth/config-files.html"><strong aria-hidden="true">2.2.</strong> Using config files</a></li><li class="chapter-item expanded "><a href="in-depth/exit-code.html"><strong aria-hidden="true">2.3.</strong> Exit codes</a></li><li class="chapter-item expanded "><a href="in-depth/human-communication.html"><strong aria-hidden="true">2.4.</strong> Communicating with humans</a></li><li class="chapter-item expanded "><a href="in-depth/machine-communication.html"><strong aria-hidden="true">2.5.</strong> Communicating with machines</a></li><li class="chapter-item expanded "><a href="in-depth/docs.html"><strong aria-hidden="true">2.6.</strong> Rendering documentation for your CLI apps</a></li></ol></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="index.html">快速上手</a></li><li class="chapter-item expanded "><a href="tutorial/index.html"><strong aria-hidden="true">1.</strong> 通过 15 分钟写一个命令行应用来学习 Rust</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="tutorial/setup.html"><strong aria-hidden="true">1.1.</strong> 项目设置</a></li><li class="chapter-item expanded "><a href="tutorial/cli-args.html"><strong aria-hidden="true">1.2.</strong> 解析命令行参数</a></li><li class="chapter-item expanded "><a href="tutorial/impl-draft.html"><strong aria-hidden="true">1.3.</strong> grrs 的第一个实现</a></li><li class="chapter-item expanded "><a href="tutorial/errors.html"><strong aria-hidden="true">1.4.</strong> 更好的错误报告</a></li><li class="chapter-item expanded "><a href="tutorial/output.html"><strong aria-hidden="true">1.5.</strong> Output for humans and machines</a></li><li class="chapter-item expanded "><a href="tutorial/testing.html"><strong aria-hidden="true">1.6.</strong> Testing</a></li><li class="chapter-item expanded "><a href="tutorial/packaging.html"><strong aria-hidden="true">1.7.</strong> Packaging and distributing a Rust tool</a></li></ol></li><li class="chapter-item expanded "><a href="in-depth/index.html"><strong aria-hidden="true">2.</strong> In-depth topics</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="in-depth/signals.html"><strong aria-hidden="true">2.1.</strong> Signal handling</a></li><li class="chapter-item expanded "><a href="in-depth/config-files.html"><strong aria-hidden="true">2.2.</strong> Using config files</a></li><li class="chapter-item expanded "><a href="in-depth/exit-code.html"><strong aria-hidden="true">2.3.</strong> Exit codes</a></li><li class="chapter-item expanded "><a href="in-depth/human-communication.html"><strong aria-hidden="true">2.4.</strong> Communicating with humans</a></li><li class="chapter-item expanded "><a href="in-depth/machine-communication.html"><strong aria-hidden="true">2.5.</strong> Communicating with machines</a></li><li class="chapter-item expanded "><a href="in-depth/docs.html"><strong aria-hidden="true">2.6.</strong> Rendering documentation for your CLI apps</a></li></ol></li><li class="chapter-item expanded "><a href="resources/index.html"><strong aria-hidden="true">3.</strong> Resources</a></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -431,7 +431,7 @@ For more information try --help
         }
     }
 </code></pre>
-<h2 id="wrapping-up-1"><a class="header" href="#wrapping-up-1">Wrapping up</a></h2>
+<h2 id="包装起来"><a class="header" href="#包装起来">包装起来</a></h2>
 <p>你的代码现在应该如下所示：</p>
 <pre><code class="language-rust ignore">#![allow(unused)]
 
@@ -466,23 +466,21 @@ fn main() {
 让我们想想办法优化
 （一个可能的思路是使用 <a href="https://doc.rust-lang.org/1.39.0/std/io/struct.BufReader.html"><code>BufReader</code></a>，而不是 <code>read_to_string()</code>）。</p>
 </aside>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="nicer-error-reporting"><a class="header" href="#nicer-error-reporting">Nicer error reporting</a></h1>
-<p>We all can do nothing but accept the fact that errors will occur.
-And in contrast to many other languages,
-it’s very hard not to notice and deal with this reality
-when using Rust:
-As it doesn’t have exceptions,
-all possible error states are often encoded in the return types of functions.</p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="更好的错误报告"><a class="header" href="#更好的错误报告">更好的错误报告</a></h1>
+<p>我们都只能接受会发生错误的现实，
+与很多其他语言相比，
+在使用 Rust 时，很难不去注意和处理这个现实。
+因为没有例外，
+所有可能的错误状态通常都编码在函数的返回类型中。</p>
 <h2 id="results"><a class="header" href="#results">Results</a></h2>
-<p>A function like <a href="https://doc.rust-lang.org/1.39.0/std/fs/fn.read_to_string.html"><code>read_to_string</code></a> doesn’t return a string.
-Instead, it returns a <a href="https://doc.rust-lang.org/1.39.0/std/result/index.html"><code>Result</code></a>
-that contains either
-a <code>String</code>
-or an error of some type
-(in this case <a href="https://doc.rust-lang.org/1.39.0/std/io/type.Result.html"><code>std::io::Error</code></a>).</p>
-<p>How do you know which it is?
-Since <code>Result</code> is an <code>enum</code>,
-you can use <code>match</code> to check which variant it is:</p>
+<p>像 <a href="https://doc.rust-lang.org/1.39.0/std/fs/fn.read_to_string.html"><code>read_to_string</code></a> 这样的函数不会返回字符串，
+相反，它返回一个 <a href="https://doc.rust-lang.org/1.39.0/std/result/index.html"><code>Result</code></a>，
+其中包含一个 <code>String</code>，
+或者某种类型的错误，
+（在这个 case 中是  <a href="https://doc.rust-lang.org/1.39.0/std/io/type.Result.html"><code>std::io::Error</code></a>）。</p>
+<p>你该如何知道这些错误是哪个呢？
+由于 <code>Result</code> 是一个 <code>enum</code> (枚举)，
+你可以使用 <code>match</code> 来检查它是哪个变体（<code>variant</code>）：</p>
 <pre><pre class="playground"><code class="language-rust no_run">
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
@@ -495,16 +493,16 @@ match result {
 </span></code></pre></pre>
 <aside>
 <p><strong>Aside:</strong>
-Not sure what enums are or how they work in Rust?
-<a href="https://doc.rust-lang.org/1.39.0/book/ch06-00-enums.html">Check this chapter of the Rust book</a>
-to get up to speed.</p>
+如果你不确定在 Rust 中 enums 是什么，以及是如何工作的？
+<a href="https://doc.rust-lang.org/1.39.0/book/ch06-00-enums.html">请移步 Rust Handbook 的这一章节</a>
+赶上进度。</p>
 </aside>
 <h2 id="unwrapping"><a class="header" href="#unwrapping">Unwrapping</a></h2>
-<p>Now, we were able to access the content of the file,
-but we can’t really do anything with it after the <code>match</code> block.
-For this, we’ll need to somehow deal with the error case.
-The challenge is that all arms of a <code>match</code> block need to return something of the same type.
-But there’s a neat trick to get around that:</p>
+<p>现在，我们能够访问文件的内容了，
+但是在 <code>match</code> block 之后我们真的不能用它做任何事，
+为此，我们需要以某种方式来处理错误情，
+这里的挑战在于，<code>match</code> block 的所有分支都必须返回类型相同的东西，
+但是这里有一个巧妙的技巧可以解决这一问题：</p>
 <pre><pre class="playground"><code class="language-rust no_run">
 <span class="boring">#![allow(unused)]
 </span><span class="boring">fn main() {
