@@ -36,7 +36,7 @@
 {{#include impl-draft.rs:18:22}}
 ```
 
-## Wrapping up
+## 包装起来
 
 你的代码现在应该如下所示：
 
