@@ -87,7 +87,7 @@ let content = match result {
     Err(error) => { return Err(error.into()); }
 };
 println!("file content: {}", content);
-Ok(())
+# Ok(())
 # }
 ```
 
