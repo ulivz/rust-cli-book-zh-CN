@@ -1,15 +1,15 @@
-# First implementation of _grrs_
+# _grrs_ 的第一个实现
 
-After the last chapter on command line arguments,
-we have our input data,
-and we can start to write our actual tool.
-Our `main` function only contains this line right now:
+在关于命令行参数的一章后，
+我们已经有了输入数据，
+我们可以开始编写实际的工具了，
+现在，我们的 `main` 函数只包含这一行：
 
 ```rust,ignore
 {{#include impl-draft.rs:15:15}}
 ```
 
-Let’s start by opening the file we got.
+让我们从读取我们得到的文件开始：
 
 ```rust,ignore
 {{#include impl-draft.rs:16:16}}
@@ -17,46 +17,43 @@ Let’s start by opening the file we got.
 
 <aside>
 
-**Aside:**
-See that [`.expect`] method here?
-This is a shortcut function to quit that will make the program exit immediately
-when the value (in this case the input file)
-could not be read.
-It's not very pretty,
-and in the next chapter on [Nicer error reporting]
-we will look at how to improve this.
+**注意：**
+看到这里的 [`.expect`] 方法了吗？
+这是一个当这个值（这个 case 中是这个输入文件）无法被读取时能够使程序立即退出的快捷功能，
+看起来不是很漂亮，
+在下一章[更好的错误报告]中，
+我们将研究如何改进这一点。
 
 [`.expect`]: https://doc.rust-lang.org/1.39.0/std/result/enum.Result.html#method.expect
-[Nicer error reporting]:./errors.html
+[更好的错误报告]:./errors.html
 
 </aside>
 
-Now, let’s iterate over the lines
-and print each one that contains our pattern:
+现在，让我们遍历这些行，
+并打印初满足我们（指定的）pattern 的每一行：
 
 ```rust,ignore
 {{#include impl-draft.rs:18:22}}
 ```
 
-## Wrapping up
+## 包装起来
 
-Your code should now look like:
+你的代码现在应该如下所示：
 
 ```rust,ignore
 {{#include impl-draft.rs}}
 ```
 
-Give it a try: `cargo run -- main src/main.rs` should work now!
+试试运行 `cargo run -- main src/main.rs`，它现在应该可以工作！
 
 <aside class="exercise">
 
-**Exercise for the reader:**
-This is not the best implementation:
-It will read the whole file into memory
-– however large the file may be.
-Find a way to optimize it!
-(One idea might be to use a [`BufReader`]
-instead of `read_to_string()`.)
+**读者练习：**
+这不是最好的实现：
+无论文件有多大，
+它都将整个文件读入内存,
+让我们想想办法优化
+（一个可能的思路是使用 [`BufReader`]，而不是 `read_to_string()`）。
 
 [`BufReader`]: https://doc.rust-lang.org/1.39.0/std/io/struct.BufReader.html
 

@@ -1,13 +1,13 @@
 # Summary
 
-[Getting started](./README.md)
+[快速上手](./README.md)
 
-- [A command line app in 15 minutes](./tutorial/README.md)
-  - [Project setup](./tutorial/setup.md)
-  - [Parsing command line arguments](./tutorial/cli-args.md)
-  - [First implementation](./tutorial/impl-draft.md)
-  - [Nicer error reporting](./tutorial/errors.md)
-  - [Output for humans and machines](./tutorial/output.md)
+- [通过 15 分钟写一个命令行应用来学习 Rust](./tutorial/README.md)
+  - [项目设置](./tutorial/setup.md)
+  - [解析命令行参数](./tutorial/cli-args.md)
+  - [_grrs_ 的第一个实现](./tutorial/impl-draft.md)
+  - [更好的错误处理](./tutorial/errors.md)
+  - [输出](./tutorial/output.md)
   - [Testing](./tutorial/testing.md)
   - [Packaging and distributing a Rust tool](./tutorial/packaging.md)
 - [In-depth topics](./in-depth/README.md)

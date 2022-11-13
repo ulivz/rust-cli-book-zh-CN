@@ -3,14 +3,14 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - feat/translation
 jobs:
   book:
     runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup
         uses: peaceiris/actions-mdbook@v1
         with:
@@ -19,7 +19,7 @@ jobs:
         run: mdbook build
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
-        if: ${{ github.ref == 'refs/heads/master' }}
+        if: ${{ github.ref == 'refs/heads/feat/translation' }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./book

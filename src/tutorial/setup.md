@@ -1,27 +1,24 @@
-# Project setup
+# 项目设置
 
-If you haven’t already,
-[install Rust] on your computer
-(it should only take a few minutes).
-After that, open a terminal and navigate to the directory
-you want to put your application code into.
+如果你还没有准备好，
+首先在你的电脑上[安装 Rust]
+（这可能会耗费几分钟），
+接着，打开 Terminal，进入你想要放置应用代码的项目目录。
 
-[install Rust]: https://www.rust-lang.org/tools/install
+[安装 Rust]: https://www.rust-lang.org/tools/install
 
-Start by running
-`cargo new grrs`
-in the directory you store your programming projects in.
-If you look at the newly created `grrs` directory,
-you’ll find a typical setup for a Rust project:
+通过在目录中运行 `cargo new grrs` 来初始化一个项目，
+如果你查看这个被创建的 `grrs` 目录，
+你将会发现对于一个 Rust 项目需要的典型的设置：
 
-- A `Cargo.toml` file that contains metadata for our project,
-  incl. a list of dependencies/external libraries we use.
-- A `src/main.rs` file that is the entry point for our (main) binary.
+- `Cargo.toml` 文件包含了当前项目的元信息
+  包含了我们用到的 `dependencies`、`external` 的库的青岛。
+- `src/main.rs` 文件，是当前项目的入口文件。
 
-If you can execute `cargo run` in the `grrs` directory
-and get a "Hello World", you’re all set up.
+如果你在 `grrs` 目录中运行 `cargo run`，
+你将会得到一个 "Hello World"，至此，你的项目准备好了。
 
-## What it might look like
+## 可能的运行过程
 
 ```console
 $ cargo new grrs
