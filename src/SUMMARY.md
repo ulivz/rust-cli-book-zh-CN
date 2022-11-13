@@ -7,7 +7,7 @@
   - [解析命令行参数](./tutorial/cli-args.md)
   - [_grrs_ 的第一个实现](./tutorial/impl-draft.md)
   - [更好的错误处理](./tutorial/errors.md)
-  - [Output for humans and machines](./tutorial/output.md)
+  - [输出](./tutorial/output.md)
   - [Testing](./tutorial/testing.md)
   - [Packaging and distributing a Rust tool](./tutorial/packaging.md)
 - [In-depth topics](./in-depth/README.md)
