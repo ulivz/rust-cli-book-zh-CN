@@ -4,13 +4,13 @@ title = "Command Line Applications in Rust"
 # ...but friends call it "Clair"
 authors = ["The Rust CLI Working Group"]
 multilingual = false
-language = "zh_CN"
+language = "zh-CN"
 src = "src"
 
 [output.html]
 curly-quotes = true
 additional-css = ["src/special-content.css"]
-git-repository-url = "https://github.com/ins-x/rust-cli-zh_CN"
+git-repository-url = "https://github.com/ulivz/rust-cli-zh_CN"
 site-url = "/book/"
 cname = "rust-cli-book.insx.dev"
 
