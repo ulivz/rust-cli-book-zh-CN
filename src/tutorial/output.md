@@ -11,13 +11,12 @@ Great，让我们进入下一个主题。
 
 ## 使用 println
 
-你可以使用 `println!` macro 来打印
-几乎全部的东西。
-这个 macro 有一写非常赞的能力，
+你可以使用 `println!` macro 来打印几乎所有的东西。
+这个 macro 有一些非常赞的能力，
 但也需要写一些特别的语法。
 它期望你能够写一个字符串文本作为第一个参数，
-其中包含了一些占位符，
-这些占位符将会被接下来的 arguments 参数的值所填充，
+其中包含一些占位符，
+这些占位符将会被接下来的 arguments 的值所填充。
 
 举个例子：
 
@@ -37,7 +36,7 @@ My lucky number is 42.
 它尝试以人类可读的方式来打印给定的值。
 但并非所有的类型都可以做到这一点，
 这也是为什么还有一个 "调试标识"，
-你可以通过填充占位符的大括号来实现，就像这样： `{:?}`.。
+你可以通过填充占位符的大括号来实现，就像这样：`{:?}`。
 
 举例来说：
 
@@ -58,7 +57,7 @@ The list is: [1, 2, 3]
 <aside>
 
 **注意:**
-“用户友好的” 打印是使用 [`Display`] trait,
+“用户友好的” 打印是使用 [`Display`] trait，
 调试输出使用 [`Debug`] trait（人类可读，但是是面向开发者的），
 关于更多你可以在 `println!` 中使用的语法的信息，
 你可以在 [`std::fmt` 的文档] 找到。
@@ -117,12 +116,11 @@ eprintln!("This is an error! :(");
 如果你在一个循环中调用类似 `println!` 的方法，
 它很容易成为一个原本很快的程序的瓶颈。
 为了提升速度，
-你有两件事可以做。
+你有两件事可以做：
 
 首先，
-你可能期望减少
-实际 “flush” 到终端的写入次数
-_每次_, `println` 告诉系统刷新到终端，
+你可能期望减少实际 “flush” 到终端的写入次数。
+（在调用）`println` 时，_每次_ 都会告诉操作系统刷新到终端，
 因为打印到每一个新行是非常常见的， 
 如果你不需要这样做，
 你可以将你的 `stdout` 句柄包装在一个 [`BufWriter`] 里，
@@ -184,11 +182,11 @@ writeln!(handle, "foo: {}", 42); // add `?` if you care about errors here
 
 为了更容易理解我们的程序中发生的事情，
 我们可能想添加一些日志（Logging）语句。
-这在编写应用程序时通常很容易。
+这在编写应用程序时通常很容易，
 但是半年后再次运行这个程序时，它会变得非常有用。
 
 在某些方面，
-日志记录与使用 `println` 相同，
+日志记录与使用 `println!` 相同，
 除了你可以指定消息的重要性。
 通常可以使用的级别是 _error_、_warn_、_info_、_debug_ 和 _trace_
 （_error_ 具有最高优先级，_trace_ 最低）。
@@ -254,18 +252,6 @@ $ cargo run --bin output-log
 [2018-11-30T20:25:52Z INFO  output_log] starting up
 [2018-11-30T20:25:52Z WARN  output_log] oops, nothing implemented!
 ```
-
-`RUST_LOG` is the name of the environment variable
-you can use to set your log settings.
-`env_logger` also contains a builder
-so you can programmatically adjust these settings,
-and, for example, also show _info_ level messages by default.
-
-There are a lot of alternative logging adapters out there,
-and also alternatives or extensions to `log`.
-If you know your application will have a lot to log,
-make sure to review them,
-and make your users' life easier.
 
 `RUST_LOG` 是环境变量的名称，
 你可以使用它来设置您的日志设置。
